@@ -10,6 +10,10 @@ class Archivo:
         with open(self.ruta_archivo, "a", encoding="UTF8") as archivo:
             archivo.write(f"{producto.id},{producto.nombre},{producto.proveedor}\n")
 
+    def add_Product_Depto(self, claveProducto, precio, claveDepto):
+        with open(self.ruta_archivo, "a", encoding="UTF8") as archivo:
+            archivo.write(f"{claveProducto},{precio},{claveDepto}\n")
+
     def add_Depto(self, depto):
         with open(self.ruta_archivo, "a", encoding="UTF8") as archivo:
             archivo.write(f"{depto.id},{depto.nombre},{depto.jefe_depto}\n")
@@ -23,6 +27,16 @@ class Archivo:
             print("Catálogo".center(50, "-"))
             print(archivo.read())
 
+    def buscar(self,id):
+        with open(self.ruta_archivo, "r") as archivo:
+            lineas = archivo.readlines()
+            for registro in lineas:
+                if registro.startswith(str(id)):
+                    return True
+                
+        return False
+        
+                
 
     def eliminar(self,id):
         # Leer el contenido del archivo y almacenarlo en una lista de diccionarios

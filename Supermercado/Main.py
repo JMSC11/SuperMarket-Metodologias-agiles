@@ -136,7 +136,8 @@ class Supermercado():
         archivo.listar()
 
     def asignacion(self):
-        opciones = ["Alta producto en departamento", "Baja producto en departamento", "Regresar"]
+        opciones = ["Alta producto en departamento", "Baja producto en departamento", "Regresar"] 
+        # TODO: Consultar producto departamento
 
         menu = Menu_Asignacion(opciones)
 
@@ -159,11 +160,33 @@ class Supermercado():
    
     def Alta_Producto_Departamento(self):
         print("Alta producto en departamento")
+        claveDepto = input("Ingresa la clave del departamento:")
+        precio= -1
+        archivo = Archivo("Departamentos.txt")
+        if archivo.buscar(claveDepto):
+            print("El departamento ya existe")
+            claveProd = int(input("Ingresa la clave del producto:"))
+            archivo_producto = Archivo("Productos.txt")
+            if archivo_producto.buscar(claveProd):
+                print("El producto ya existe")
+                nombre_fichero = claveDepto + "ProductosSepto.txt"
+                archivo_producto_in_depto = Archivo(nombre_fichero)
+                if archivo_producto_in_depto.buscar(claveProd):
+                    print("El producto ya existe en el departamento")
+                else: 
+                    archivo_producto_in_depto.add_Product_Depto(claveProd, precio, claveDepto)
+                    print("Producto agregado al departamento")
+            else:
+                print("No existe producto con esa clave")
+        else:
+            print("No hay depto con la clave proporcionada")
+
 
     def Baja_Producto_Departamento(self):
         print("Baja producto en  departamento")
 
-    
+    def Consultar_Producto_Departamento(self):
+        print("Consulta producto departamento")
 
 
     def precio(self):
