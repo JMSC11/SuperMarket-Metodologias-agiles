@@ -28,7 +28,14 @@ class Archivo:
             print(archivo.read())
 
     def listar_Precios(self):
-        print(":c")
+        with open(self.ruta_archivo, "r") as archivo:
+            lineas = archivo.readlines()
+            for i, registro in enumerate(lineas):
+                producto = lineas[i]
+                elementos = producto.strip().split(',')
+                item = "id:  " + elementos[0]  + "    Precio:  " + elementos[1]
+                print(item)
+                  
 
 
     def buscar(self,id):
