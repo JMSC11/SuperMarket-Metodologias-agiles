@@ -65,4 +65,18 @@ class Archivo:
         with open(file, "w") as archivo:
             archivo.close()
 
+    def asignar_Precio(self, precio, ClaveProd):
+        with open(self.ruta_archivo, "r") as archivo:
+            lineas = archivo.readlines()
+            for i, registro in enumerate(lineas):
+                if registro.startswith(str(ClaveProd)):
+                    producto = lineas[i]
+                    elementos = producto.strip().split(',')
+                    elementos[1] = str(precio)  # Intercambiar el segundo elemento por el precio
+                    producto = ','.join(elementos) + '\n'
+                    lineas[i] = producto
+                    break   
+        with open(self.ruta_archivo, "w") as archivo:
+            archivo.writelines(lineas)    
+
 
