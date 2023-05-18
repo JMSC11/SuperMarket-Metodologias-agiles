@@ -1,2 +1,5 @@
 2,arroz,arrozP
 4,Agua,Bonafont
+5,agua,bonafont
+6,cerveza,modelo
+7,chicharron,ramos

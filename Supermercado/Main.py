@@ -136,7 +136,7 @@ class Supermercado():
         archivo.listar()
 
     def asignacion(self):
-        opciones = ["Alta producto en departamento", "Baja producto en departamento", "Regresar"] 
+        opciones = ["Alta producto en departamento", "Baja producto en departamento", "Consultar productos en departamento", "Regresar"] 
         # TODO: Consultar producto departamento
 
         menu = Menu_Asignacion(opciones)
@@ -153,6 +153,9 @@ class Supermercado():
                 print("Opción Baja producto en  departamento")
                 self.Baja_Producto_Departamento()
             elif opcion ==3:
+                print("Opción Consultar producto en  departamento")
+                self.Consultar_Producto_Departamento()
+            elif opcion ==4:
                 print("Opción regresar")
                 self.Regresar()
             else: 
@@ -184,9 +187,32 @@ class Supermercado():
 
     def Baja_Producto_Departamento(self):
         print("Baja producto en  departamento")
+        claveDepto = input("Ingresa la clave del departamento:")
+        archivo = Archivo("Departamentos.txt")
+        if archivo.buscar(claveDepto):
+            print("Se ha encontrado el departamento")
+            claveProd = int(input("Ingresa la clave del producto:"))
+            nombre_fichero = claveDepto + "ProductosSepto.txt"
+            archivo_producto_in_depto = Archivo(nombre_fichero)
+            if archivo_producto_in_depto.buscar(claveProd):
+                print("Eliminando producto en fichero")
+                archivo_producto_in_depto.eliminar(claveProd)
+            else: 
+                print("No existe producto con esa clave en este departamento")
+        else:
+            print("No hay depto con la clave proporcionada")
 
     def Consultar_Producto_Departamento(self):
         print("Consulta producto departamento")
+        claveDepto = input("Ingresa la clave del departamento:")
+        nombre_fichero = claveDepto + "ProductosSepto.txt"
+        archivo_producto_in_depto = Archivo(nombre_fichero)
+        archivo = Archivo("Departamentos.txt")
+        if archivo.buscar(claveDepto):
+            print("Lista de productos:")
+            archivo_producto_in_depto.listar()
+        else:
+            print("No hay depto con la clave proporcionada")
 
 
     def precio(self):
