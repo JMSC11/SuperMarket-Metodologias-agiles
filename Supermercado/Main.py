@@ -236,10 +236,11 @@ class Supermercado():
                 self.Regresar()
             else: 
                 print("Opcion no valida")
-   
+   #Misa, De dios
     def Asignar_Precio(self):
         print("Asignar Precio")
 
+    #Mauri, consulteichon
     def Consultar_Precio(self):
         print("Consultar Precio")
 
