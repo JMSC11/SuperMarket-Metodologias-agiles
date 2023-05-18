@@ -239,6 +239,25 @@ class Supermercado():
    #Misa, De dios
     def Asignar_Precio(self):
         print("Asignar Precio")
+        claveDepto = input("Ingresa la clave del departamento:")
+        archivo = Archivo("Departamentos.txt")
+        if archivo.buscar(claveDepto):
+            print("Se encontro el departamento")
+            claveProd = int(input("Ingresa la clave del producto:"))
+
+            precio= input("Ingresa el precio del producto:")
+            nombre_fichero = claveDepto + "ProductosSepto.txt"
+            archivo_producto_in_depto = Archivo(nombre_fichero)
+
+            if archivo_producto_in_depto.buscar(claveProd):
+                print("El producto ha sido encontrado")
+                print("Cambiando el precio del producto")
+                archivo_producto_in_depto.asignar_Precio(precio, claveProd)
+                print("Precio actualizado correctamente")
+            else: 
+                print("Producto no existente en el departamento")
+        else:
+            print("No hay depto con la clave proporcionada")
 
     #Mauri, consulteichon
     def Consultar_Precio(self):
