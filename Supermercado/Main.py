@@ -243,6 +243,15 @@ class Supermercado():
     #Mauri, consulteichon
     def Consultar_Precio(self):
         print("Consultar Precio")
+        claveDepto = input("Ingresa la clave del departamento:")
+        nombre_fichero = claveDepto + "ProductosSepto.txt"
+        archivo_producto_in_depto = Archivo(nombre_fichero)
+        archivo = Archivo("Departamentos.txt")
+        if archivo.buscar(claveDepto):
+            print("Lista de productos:")
+            archivo_producto_in_depto.listar_Precios()
+        else:
+            print("No hay depto con la clave proporcionada")
 
     def salir(self):
         print("")

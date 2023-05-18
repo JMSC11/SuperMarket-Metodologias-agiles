@@ -27,6 +27,10 @@ class Archivo:
             print("Catálogo".center(50, "-"))
             print(archivo.read())
 
+    def listar_Precios(self):
+        print(":c")
+
+
     def buscar(self,id):
         with open(self.ruta_archivo, "r") as archivo:
             lineas = archivo.readlines()
